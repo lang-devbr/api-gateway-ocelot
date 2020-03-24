@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Consul;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 
 namespace Catalogo
 {
@@ -26,8 +18,6 @@ namespace Catalogo
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            ConsulRegister();
-
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
@@ -46,21 +36,6 @@ namespace Catalogo
 
             app.UseHttpsRedirection();
             app.UseMvc();
-        }
-
-        public async Task<WriteResult> ConsulRegister()
-        {
-            var client = new ConsulClient(); // uses default host:port which is localhost:8500
-
-            var agentReg = new AgentServiceRegistration()
-            {
-                Address = "127.0.0.1",
-                ID = "api-catalogo",
-                Name = "CatalogService",
-                Port = 44367
-            };
-
-            return await client.Agent.ServiceRegister(agentReg);
         }
     }
 }

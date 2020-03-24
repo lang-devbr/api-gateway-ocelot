@@ -29,11 +29,11 @@ namespace ApiGateway
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            ConsulRegister();
+            //ConsulRegister();
 
-            services.AddOcelot()
-                    .AddConsul()
-                    .AddConfigStoredInConsul();
+            services.AddOcelot();
+                    //.AddConsul()
+                    //.AddConfigStoredInConsul();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

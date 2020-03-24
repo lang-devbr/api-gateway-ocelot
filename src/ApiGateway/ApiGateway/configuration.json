@@ -1,60 +1,57 @@
 {
   //ReRoutes comentado pois está configurado no Consul Key/Value
-  //"ReRoutes": [
-  //  {
-  //    "DownstreamPathTemplate": "/",
-  //    "DownstreamScheme": "https",
-  //    "DownstreamHostAndPorts": [
-  //      {
-  //        "Host": "localhost",
-  //        "Port": 44349
-  //      }
-  //    ],
-  //    "UpstreamPathTemplate": "/pedido/",
-  //    "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete", "Options" ]
-  //  },
-  //  {
-  //    "DownstreamPathTemplate": "/{everything}",
-  //    "DownstreamScheme": "https",
-  //    "DownstreamHostAndPorts": [
-  //      {
-  //        "Host": "localhost",
-  //        "Port": 44350
-  //      }
-  //    ],
-  //    "UpstreamPathTemplate": "/pedido/{everything}",
-  //    "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete", "Options" ]
-  //  },
-  //  {
-  //    "DownstreamPathTemplate": "/",
-  //    "DownstreamScheme": "https",
-  //    "DownstreamHostAndPorts": [
-  //      {
-  //        "Host": "localhost",
-  //        "Port": 44349
-  //      }
-  //    ],
-  //    "UpstreamPathTemplate": "/catalogo/",
-  //    "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete", "Options" ]
-  //  },
-  //  {
-  //    "DownstreamPathTemplate": "/{everything}",
-  //    "DownstreamScheme": "https",
-  //    "DownstreamHostAndPorts": [
-  //      {
-  //        "Host": "localhost",
-  //        "Port": 44367
-  //      }
-  //    ],
-  //    "UpstreamPathTemplate": "/catalogo/{everything}",
-  //    "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete", "Options" ]
-  //  }
-  //],
-  "GlobalConfiguration": {
-    "ServiceDiscoveryProvider": {
-      "Host": "localhost",
-      "Port": 8500,
-      "ConfigurationKey": "Oceolot_A"
+  "ReRoutes": [
+    {
+      "DownstreamPathTemplate": "/",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8000
+        }
+      ],
+      "UpstreamPathTemplate": "/pedido/",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete", "Options" ]
+    },
+    {
+      "DownstreamPathTemplate": "/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 64956
+        }
+      ],
+      "UpstreamPathTemplate": "/pedido/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete", "Options" ]
+    },
+    {
+      "DownstreamPathTemplate": "/",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8000
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete", "Options" ]
+    },
+    {
+      "DownstreamPathTemplate": "/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 64954
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete", "Options" ]
     }
+  ],
+  "GlobalConfiguration": {
+    "RequestIdKey": "OcRequestId",
+    "AdministrationPath": "/administration"
   }
 }
